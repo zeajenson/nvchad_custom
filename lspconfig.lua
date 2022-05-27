@@ -9,8 +9,12 @@ M.setup_lsp = function(attach, capabilities)
     settings = {}
   }
 
+  local servers = {"html", "cssls", "ccls", "bashls", "eslint"};
+
   local lspconfig = require "lspconfig"
-  lspconfig['ccls'].setup(default_lsp_setup)
+
+  for _, lsp in ipairs(servers) do lspconfig[lsp].setup(default_lsp_setup) end
+
 end
 
 return M
